@@ -25,7 +25,7 @@ services:
       timeout: 20s
       retries: 1
 
-  query-service:
+  path-pilot-service:
     image: floredenis2001/path-pilot-service:latest
     networks:
       - mynet

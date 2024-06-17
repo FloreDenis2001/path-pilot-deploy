@@ -26,7 +26,7 @@ services:
       retries: 1
 
   path-pilot-service:
-    image: floredenis2001/path-pilot-service:latest
+    image: floredenis2001/path-pilot-service:17.06.2024.18.42.22
     networks:
       - mynet
     environment:

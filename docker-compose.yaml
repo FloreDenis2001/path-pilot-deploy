@@ -8,7 +8,6 @@ volumes:
   db_data:
 
 services:
-
   mysql:
     image: mysql:5.7
     environment:
@@ -24,9 +23,8 @@ services:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       timeout: 20s
       retries: 1
-
   path-pilot-service:
-    image: floredenis2001/path-pilot-service:17.06.2024.18.50.39
+    image: floredenis2001/path-pilot-server:latest
     networks:
       - mynet
     environment:
@@ -34,22 +32,23 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      discovery-service:
-        condition: service_started
+      - mysql
   clientapp:
     image: floredenis2001/path-pilot-client:19.06.2024.18.32.52
     networks:
-      - mynetwork
+      - mynet
     ports:
-      - "5000:80"
+      - "80:80"
     depends_on:
-      - webapp
+      - path-pilot-service
+    environment:
+      - REACT_APP_ENV=prod
   nginx:
     image: floredenis2001/path-pilot-proxy:v1
     networks:
-      - mynetwork
+      - mynet
     ports:
       - "8080:80"
     depends_on:
       - clientapp
-      - webapp
+      - path-pilot-service

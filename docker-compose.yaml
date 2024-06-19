@@ -45,7 +45,7 @@ services:
     depends_on:
       - webapp
   nginx:
-    image: floredenis2001/path-pilot-proxy:latest
+    image: floredenis2001/path-pilot-proxy:v1
     networks:
       - mynetwork
     ports:

@@ -37,7 +37,7 @@ services:
       discovery-service:
         condition: service_started
   clientapp:
-    image: floredenis2001/path-pilot-client:latest
+    image: floredenis2001/path-pilot-client:19.06.2024.18.32.52
     networks:
       - mynetwork
     ports:

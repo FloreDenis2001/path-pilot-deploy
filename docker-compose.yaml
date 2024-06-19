@@ -36,3 +36,20 @@ services:
     depends_on:
       discovery-service:
         condition: service_started
+  clientapp:
+    image: floredenis2001/path-pilot-client:latest
+    networks:
+      - mynetwork
+    ports:
+      - "5000:80"
+    depends_on:
+      - webapp
+  nginx:
+    image: floredenis2001/path-pilot-proxy:latest
+    networks:
+      - mynetwork
+    ports:
+      - "8080:80"
+    depends_on:
+      - clientapp
+      - webapp

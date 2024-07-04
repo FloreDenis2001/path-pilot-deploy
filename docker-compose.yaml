@@ -34,7 +34,7 @@ services:
     depends_on:
       - mysql
   clientapp:
-    image: floredenis2001/path-pilot-client:21.06.2024.14.45.02
+    image: floredenis2001/path-pilot-client:04.07.2024.14.41.52
     networks:
       - mynet
     ports:

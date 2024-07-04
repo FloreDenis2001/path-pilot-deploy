@@ -24,7 +24,7 @@ services:
       timeout: 20s
       retries: 1
   path-pilot-service:
-    image: floredenis2001/path-pilot-server:01.07.2024.19.17.03
+    image: floredenis2001/path-pilot-server:04.07.2024.10.12.05
     networks:
       - mynet
     environment:
